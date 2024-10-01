@@ -1,0 +1,8 @@
+#navbar {
+    display: inline;
+    text-align: center;
+}
+
+#navbar .navbutton {
+    display: inline-block;
+}
