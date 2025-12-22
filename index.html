@@ -1,19 +1,55 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hi</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <nav id = "navbar">
-            <ul>
-                <li class = "navbutton"><a href="">Home</a></li>
-                <li class = "navbutton"><a href="">About Me</a></li>
-                <li class = "navbutton"><a href="">Resume</a></li>
-            </ul>
-        </nav>
-        <p>Alvin was here.</p>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvin Cheung</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/solid.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/brands.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-section" id="nav-home">
+            <a href="#">
+                <i class="fa-solid fa-house-chimney"></i>
+            </a>
+        </div>
+
+        <div class="nav-section" id="nav-link-section">
+            <a href="aboutme.html">About</a>
+            <a href="#">Resumé</a>
+        </div>
+
+        <div class="nav-section" id="nav-social-section">
+            <div class="nav-toggles">
+                <button id="color-toggle" aria-label="Toggle dark/light mode">🌙</button>
+                <button id="style-toggle" aria-label="Toggle site style">⌘</button>
+            </div>
+            <div class="nav-icons">
+                <a href="https://www.linkedin.com/in/alvin-cheung-2769a8146/" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/alvincheung1999/" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <main class="hero">
+        <h1>Alvin Cheung</h1>
+        <p>Software engineer focused on clarity, performance, and thoughtful design.</p>
+    </main>
+
+    <script src="index.js"></script>
+</body>
 </html>

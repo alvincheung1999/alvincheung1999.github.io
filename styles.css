@@ -1,8 +1,374 @@
-#navbar {
-    display: inline;
-    text-align: center;
+:root {
+  --background-color: rgb(0, 0, 0);
+  --text-color: rgb(255, 255, 255);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --highlight-color: rgb(0, 122, 255);
 }
 
-#navbar .navbutton {
-    display: inline-block;
+body.light-mode {
+  --background-color: rgb(255, 255, 255);
+  --text-color: rgb(0, 0, 0);
+  --border-color: rgba(0, 0, 0, 0.15);
+  --highlight-color: rgb(0, 122, 255);
+}
+
+/* Reset & base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  overflow: hidden;
+
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+               "Segoe UI", Helvetica, Arial, sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--highlight-color);
+}
+
+/* Navigation - Apple Mode */
+nav {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: min(1100px, calc(100% - 2.5rem));
+  height: 60px;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+
+  padding: 0 1.75rem;
+
+  background: rgba(20, 20, 20, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  z-index: 100;
+
+  transition:
+    left 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.5s ease,
+    color 0.5s ease,
+    border-color 0.5s ease;
+}
+
+/* Sections */
+.nav-section {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+/* Center links */
+#nav-link-section {
+  justify-content: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+/* Home icon */
+#nav-home i {
+  font-size: 1.05rem;
+  opacity: 0.9;
+}
+
+/* Icons */
+nav i {
+  font-size: 1rem;
+  opacity: 0.85;
+  color: currentColor;
+  transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+nav i:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* Links */
+nav a {
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+/* Apple-style hover underline */
+#nav-link-section a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--highlight-color);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.25s ease;
+}
+
+#nav-link-section a:hover::after {
+  width: 100%;
+}
+
+/* Social section in Apple mode */
+#nav-social-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* gap between toggles and icons */
+}
+
+#nav-social-section .nav-toggles,
+#nav-social-section .nav-icons {
+  display: flex;
+  gap: 0.5rem; /* spacing within each group */
+}
+
+/* Hero section */
+.hero {
+  height: 100vh;
+  padding-top: 120px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  gap: 1.25rem;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  color: var(--text-color);
+}
+
+/* Toggle buttons */
+#style-toggle,
+#color-toggle {
+  all: unset;
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 1rem;
+  line-height: 1;
+  text-align: center;
+
+  border: none;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+
+  color: currentColor;
+  opacity: 0.85;
+
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+#style-toggle:hover,
+#color-toggle:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+  background: rgba(0,0,0,0.05);
+  border-radius: 50%;
+}
+
+/* ===============================
+   PLAINTEXT / EARLY INTERNET MODE
+   =============================== */
+
+body.plaintext {
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* TXT mode sidebar */
+body.plaintext nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: auto;
+  transform: none;
+
+  width: 220px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  gap: 2rem;
+  padding-top: 2rem;
+
+  background: var(--background-color);
+  color: var(--text-color);
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+  border-left: none;
+
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+/* Stack nav sections vertically */
+body.plaintext .nav-section {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* Center links → left align */
+body.plaintext #nav-link-section {
+  justify-content: flex-start;
+}
+
+/* Stack toggles vertically in TXT mode */
+body.plaintext #nav-social-section button,
+body.plaintext #nav-social-section a {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+body.plaintext #nav-social-section .nav-toggles {
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+body.plaintext #nav-social-section .nav-icons {
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Ensure icons/buttons inherit color and size */
+body.plaintext nav i,
+body.plaintext nav a,
+body.plaintext #style-toggle,
+body.plaintext #color-toggle {
+  color: currentColor;
+  font-size: 1rem;
+  line-height: 1;
+  display: block;
+}
+
+/* Hero in TXT mode */
+body.plaintext .hero {
+  height: auto;
+  padding: 2rem 1rem;
+  align-items: flex-start;
+  text-align: left;
+  margin-left: 220px;
+  margin-right: 0;
+}
+
+body.plaintext .hero p {
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+body.plaintext h1 {
+  font-size: 2rem;
+  letter-spacing: 0;
+}
+
+/* Remove hover effects and underlines */
+body.plaintext a,
+body.plaintext i,
+body.plaintext button {
+  transition: none;
+  opacity: 1;
+}
+
+body.plaintext #nav-link-section a::after {
+  display: none;
+}
+
+body.plaintext #style-toggle {
+  font-family: "Courier New", monospace;
+}
+
+body.light-mode nav {
+  background: rgba(245, 245, 245, 0.95); /* soft off-white */
+  border: 1px solid rgba(200, 200, 200, 0.6); /* subtle border */
+  color: var(--text-color); /* ensure text/icons update */
+}
+
+/* ===============================
+   GLITCH TRANSITION
+   =============================== */
+
+body.transitioning {
+  pointer-events: none;
+}
+
+body.transitioning * {
+  animation: glitch 0.18s steps(2, end);
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow:
+      1px 0 red,
+      -1px 0 cyan;
+    transform: translate(0);
+  }
+  25% { transform: translate(-1px, 1px); }
+  50% {
+    text-shadow:
+      -1px 0 red,
+      1px 0 cyan;
+    transform: translate(1px, -1px);
+  }
+  75% { transform: translate(-1px, 0); }
+  100% {
+    text-shadow: none;
+    transform: translate(0);
+  }
+}
+
+/* Smooth nav movement */
+nav {
+  transition:
+    left 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+body.transitioning.plaintext nav {
+  transform: translateX(-8px);
 }
